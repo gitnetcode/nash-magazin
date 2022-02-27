@@ -6,12 +6,10 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-        $products = Product::all();
-        // foreach($products as $product){
-        //     echo 'Title'. $product->title;
-        //     echo "<br>";
-        // }
-        return view('home.index');
+        $products = Product::orderBy('created_at')->take(8)->get();
+        return view('home.index',[
+            'products' => $products
+        ]);
     }
 }
 

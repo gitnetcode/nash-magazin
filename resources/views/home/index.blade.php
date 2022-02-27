@@ -3,7 +3,6 @@
 @section('title', 'Home')
 @section('content')
 	<!-- Home -->
-
 	<div class="home">
 		<div class="home_slider_container">
 			
@@ -132,81 +131,37 @@
 					<div class="product_grid">
 
 						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="images/product_1.jpg" alt=""></div>
-							<div class="product_extra product_new"><a href="categories.html">New</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
+						@foreach($products as $product):
+							@php
+								$image ='';
+								if(count($product->images) > 0){
+									$image = $product->images[0]['img'];
+								} else {
+									$image = 'no_image.jpg';
+								}
+							@endphp
 
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="images/product_2.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Sale</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
+							<div class="product">
+								<div class="product_image">
+									<img src='images/{{$image}}' alt="{{$product->title}}">
+								</div>
+								<div class="product_extra product_new">
+									<a href="categories.html">
+										New
+									</a>
+								</div>
+								<div class="product_content">
+									<div class="product_title">
+										<a href="product.html">
+											{{$product->title}}
+										</a>
+									</div>
+									<div class="product_price">
+									${{$product->price}}
+									</div>
+								</div>
 							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="images/product_3.jpg" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="images/product_4.jpg" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="images/product_5.jpg" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="images/product_6.jpg" alt=""></div>
-							<div class="product_extra product_hot"><a href="categories.html">Hot</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="images/product_7.jpg" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="images/product_8.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Hot</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
+						@endforeach
 					</div>
 						
 				</div>
@@ -305,19 +260,3 @@
 	<!-- Footer -->
 @endsection
 
-
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/custom.js"></script>
-</body>
-</html>
